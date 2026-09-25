@@ -212,7 +212,7 @@ Como desenvolvedor, este projeto mostra:
 Desenvolvedora Full-Stack | ASP.NET Core | C# | MySQL | Web Development
 
 - 🔗 [GitHub](https://github.com/Karina-Amorim-Dev)
-- 💼 [LinkedIn](www.linkedin.com/in/karina-amorim-1a0351345) 
+- 💼 [LinkedIn](https://www.linkedin.com/in/karina-amorim-1a0351345/) 
 - 📧 karina.amorim.etec@gmail.com
 
 ---
