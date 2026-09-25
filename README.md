@@ -130,14 +130,14 @@ CrudClinica/
    
    Crie o banco no MySQL:
    ```sql
-   CREATE DATABASE crud_clinica;
+   CREATE DATABASE crudclinica;
    ```
 
    Atualize `appsettings.json`:
    ```json
    {
      "ConnectionStrings": {
-       "DefaultConnection": "Server=localhost;Database=crud_clinica;User=root;Password=sua_senha;"
+       "DefaultConnection": "Server=localhost;Database=crudclinica;User=root;Password=sua_senha;"
      }
    }
    ```
@@ -212,7 +212,7 @@ Como desenvolvedor, este projeto mostra:
 Desenvolvedora Full-Stack | ASP.NET Core | C# | MySQL | Web Development
 
 - 🔗 [GitHub](https://github.com/Karina-Amorim-Dev)
-- 💼 [LinkedIn](https://linkedin.com/in/seu-perfil) *(atualizar)*
+- 💼 [LinkedIn](www.linkedin.com/in/karina-amorim-1a0351345) 
 - 📧 karina.amorim.etec@gmail.com
 
 ---
