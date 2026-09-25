@@ -1,0 +1,227 @@
+﻿@model List<CrudClinica.Models.Paciente>
+
+@{
+    ViewData["Title"] = "Pacientes";
+}
+
+<div class="container py-5">
+
+
+    @if (TempData["Sucesso"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show shadow-sm"
+             role="alert">
+
+            <i class="bi bi-check-circle-fill me-2"></i>
+
+            @TempData["Sucesso"]
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Fechar">
+            </button>
+
+        </div>
+    }
+
+
+    @if (TempData["Erro"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show shadow-sm"
+             role="alert">
+
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+
+            @TempData["Erro"]
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Fechar">
+            </button>
+
+        </div>
+    }
+
+
+    <div class="d-flex flex-column flex-md-row
+                justify-content-between
+                align-items-md-center
+                gap-3
+                mb-4">
+
+        <div>
+
+            <h1 class="fw-bold text-primary mb-1">
+
+                <i class="bi bi-person-vcard me-2"></i>
+
+                Pacientes
+
+            </h1>
+
+            <p class="text-secondary mb-0">
+                Gerenciamento dos pacientes da clínica
+            </p>
+
+        </div>
+
+
+        <a asp-controller="Pacientes"
+           asp-action="Cadastrar"
+           class="btn btn-primary">
+
+            <i class="bi bi-person-plus-fill me-1"></i>
+
+            Novo Paciente
+
+        </a>
+
+    </div>
+
+
+    <div class="card border-0 shadow rounded-4">
+
+        <div class="card-body p-0">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover table-striped
+                              align-middle mb-0">
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th class="px-4">
+                                ID
+                            </th>
+
+                            <th>
+                                Nome
+                            </th>
+
+                            <th>
+                                CPF
+                            </th>
+
+                            <th>
+                                Telefone
+                            </th>
+
+                            <th>
+                                Data de Nascimento
+                            </th>
+
+                            <th class="text-center">
+                                Ações
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var paciente in Model)
+                            {
+                                <tr>
+
+                                    <td class="px-4 fw-semibold">
+                                        @paciente.idPaciente
+                                    </td>
+
+                                    <td>
+                                        @paciente.nome
+                                    </td>
+
+                                    <td>
+                                        @paciente.cpf
+                                    </td>
+
+                                    <td>
+                                        @paciente.telefone
+                                    </td>
+
+                                    <td>
+                                        @(paciente.dataNasc?.ToString("dd/MM/yyyy"))
+                                    </td>
+
+                                    <td class="text-center">
+
+                                        <!-- EDITAR -->
+
+                                        <a asp-controller="Pacientes"
+                                           asp-action="Editar"
+                                           asp-route-id="@paciente.idPaciente"
+                                           class="btn btn-warning btn-sm me-1"
+                                           title="Editar">
+
+                                            <i class="bi bi-pencil-square"></i>
+
+                                            Editar
+
+                                        </a>
+
+
+                                        <!-- EXCLUIR -->
+
+                                        <form asp-controller="Pacientes"
+                                              asp-action="Excluir"
+                                              asp-route-id="@paciente.idPaciente"
+                                              method="post"
+                                              class="d-inline">
+
+                                            <button type="submit"
+                                                    class="btn btn-danger btn-sm"
+                                                    title="Excluir"
+                                                    onclick="return confirm('Tem certeza que deseja excluir este paciente?');">
+
+                                                <i class="bi bi-trash3"></i>
+
+                                                Excluir
+
+                                            </button>
+
+                                        </form>
+
+                                    </td>
+
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+
+                                <td colspan="6"
+                                    class="text-center py-5">
+
+                                    <i class="bi bi-people text-secondary"
+                                       style="font-size: 3rem;">
+                                    </i>
+
+                                    <p class="text-secondary mt-3 mb-0">
+                                        Nenhum paciente cadastrado.
+                                    </p>
+
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,33 @@
+﻿# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build
+bin/
+obj/
+
+# Arquivos de compilação e publicação
+Debug/
+Release/
+x64/
+x86/
+
+# Logs
+*.log
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Rider / JetBrains
+.idea/
+
+# User Secrets
+secrets.json

@@ -1,0 +1,109 @@
+﻿@model CrudClinica.Models.Especialidade
+
+@{
+    ViewData["Title"] = "Editar Especialidade";
+}
+
+<div class="container py-5">
+
+
+    <div class="mb-4">
+
+        <h1 class="fw-bold text-danger mb-1">
+
+            <i class="bi bi-pencil-square me-2"></i>
+
+            Editar Especialidade
+
+        </h1>
+
+        <p class="text-secondary mb-0">
+
+            Altere os dados da especialidade cadastrada.
+
+        </p>
+
+    </div>
+
+
+    <div class="card border-0 shadow rounded-4">
+
+        <div class="card-body p-4 p-md-5">
+
+            <form asp-controller="Especialidades"
+                  asp-action="Editar"
+                  method="post">
+
+
+                <input asp-for="idEspecialidade"
+                       type="hidden" />
+
+
+                <div asp-validation-summary="ModelOnly"
+                     class="alert alert-danger"
+                     role="alert">
+                </div>
+
+
+                <div class="mb-4">
+
+                    <label asp-for="nome"
+                           class="form-label fw-semibold">
+
+                        <i class="bi bi-heart-pulse me-1"></i>
+
+                        Nome da especialidade
+
+                    </label>
+
+                    <input asp-for="nome"
+                           class="form-control form-control-lg"
+                           placeholder="Digite o nome da especialidade" />
+
+                    <span asp-validation-for="nome"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+
+                <div class="d-flex flex-column flex-md-row gap-2 mt-4">
+
+                    <button type="submit"
+                            class="btn btn-danger btn-lg">
+
+                        <i class="bi bi-check-circle-fill me-1"></i>
+
+                        Salvar Alterações
+
+                    </button>
+
+
+                    <a asp-controller="Especialidades"
+                       asp-action="Index"
+                       class="btn btn-outline-secondary btn-lg">
+
+                        <i class="bi bi-arrow-left me-1"></i>
+
+                        Voltar
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}

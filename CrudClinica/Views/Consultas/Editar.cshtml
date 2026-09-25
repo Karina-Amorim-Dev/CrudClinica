@@ -1,0 +1,195 @@
+﻿@model CrudClinica.Models.Consulta
+
+@{
+    ViewData["Title"] = "Editar Consulta";
+
+
+    var medicos =
+        ViewBag.Medicos as List<CrudClinica.Models.Medico>;
+
+    var pacientes =
+        ViewBag.Pacientes as List<CrudClinica.Models.Paciente>;
+}
+
+
+<div class="container py-5">
+
+
+    <div class="mb-4">
+
+        <h1 class="fw-bold text-warning mb-1">
+
+            <i class="bi bi-pencil-square me-2"></i>
+
+            Editar Consulta
+
+        </h1>
+
+        <p class="text-secondary mb-0">
+
+            Altere os dados da consulta cadastrada.
+
+        </p>
+
+    </div>
+
+
+    <div class="card border-0 shadow rounded-4">
+
+        <div class="card-body p-4 p-md-5">
+
+            <form asp-controller="Consultas"
+                  asp-action="Editar"
+                  method="post">
+
+
+                <input asp-for="idConsulta"
+                       type="hidden" />
+
+
+                <div asp-validation-summary="ModelOnly"
+                     class="alert alert-danger"
+                     role="alert">
+                </div>
+
+
+                <div class="mb-4">
+
+                    <label asp-for="idMedico"
+                           class="form-label fw-semibold">
+
+                        <i class="bi bi-person-badge me-1"></i>
+
+                        Médico
+
+                    </label>
+
+                    <select asp-for="idMedico"
+                            class="form-select form-select-lg">
+
+                        <option value="">
+                            Selecione o médico
+                        </option>
+
+                        @if (medicos != null)
+                        {
+                            foreach (var medico in medicos)
+                            {
+                                <option value="@medico.idMedico">
+
+                                    @medico.nome
+
+                                </option>
+                            }
+                        }
+
+                    </select>
+
+                    <span asp-validation-for="idMedico"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+
+                <div class="mb-4">
+
+                    <label asp-for="idPaciente"
+                           class="form-label fw-semibold">
+
+                        <i class="bi bi-person-vcard me-1"></i>
+
+                        Paciente
+
+                    </label>
+
+                    <select asp-for="idPaciente"
+                            class="form-select form-select-lg">
+
+                        <option value="">
+                            Selecione o paciente
+                        </option>
+
+                        @if (pacientes != null)
+                        {
+                            foreach (var paciente in pacientes)
+                            {
+                                <option value="@paciente.idPaciente">
+
+                                    @paciente.nome
+
+                                </option>
+                            }
+                        }
+
+                    </select>
+
+                    <span asp-validation-for="idPaciente"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+
+                <div class="mb-4">
+
+                    <label asp-for="dataHora"
+                           class="form-label fw-semibold">
+
+                        <i class="bi bi-calendar-event me-1"></i>
+
+                        Data e hora da consulta
+
+                    </label>
+
+                    <input asp-for="dataHora"
+                           type="datetime-local"
+                           class="form-control form-control-lg" />
+
+                    <span asp-validation-for="dataHora"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+
+                <div class="d-flex flex-column flex-md-row gap-2 mt-4">
+
+                    <button type="submit"
+                            class="btn btn-warning btn-lg">
+
+                        <i class="bi bi-check-circle-fill me-1"></i>
+
+                        Salvar Alterações
+
+                    </button>
+
+
+                    <a asp-controller="Consultas"
+                       asp-action="Index"
+                       class="btn btn-outline-secondary btn-lg">
+
+                        <i class="bi bi-arrow-left me-1"></i>
+
+                        Voltar
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}
